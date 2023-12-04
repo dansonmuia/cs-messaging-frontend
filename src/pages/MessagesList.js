@@ -1,4 +1,4 @@
-import { Box, Button, Divider, IconButton, Stack, Typography } from '@mui/material'
+import { Box, Button, Divider, IconButton, Stack, TextField, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'notistack'
@@ -15,6 +15,7 @@ const MessagesList = () => {
     const dispatch = useDispatch()
     const {enqueueSnackbar} = useSnackbar()
     const messages = useSelector(state => state.messages) || []
+    const [searchCustomerId, setSearchCustomerId] = useState('')
 
     const [page, setCurrentPage] = useState(1)
     const [offset, setOffset] = useState(0)
@@ -32,8 +33,14 @@ const MessagesList = () => {
     }
 
     const fetchMessages = async () => {
+        let url = `${urls.listMessages}?offset=${offset}`
+        if (searchCustomerId != '') {
+            url = `${url}&customer_id=${searchCustomerId}`
+        }
+
+        console.log(url)
         try {
-            const response = await getData(`${urls.listMessages}?offset=${offset}`, token)
+            const response = await getData(url, token)
             const responseData = await response.json()
             if (response.status === 200) {
                 dispatch(setMessages(responseData))
@@ -61,14 +68,23 @@ const MessagesList = () => {
             <Typography variant="h6">
                 Messages
             </Typography>
-            <Button
-                variant="contained" 
-                sx={{
-                    color: 'white',
-                }}
-            >
-                Filter messages
-            </Button>
+            <TextField
+                id="searchCustomerId"
+                label="Search by customer ID"
+                value={searchCustomerId}
+                onChange={(e) => setSearchCustomerId(e.target.value)}
+            />
+            <Box>
+                <Button
+                    variant="contained" 
+                    sx={{
+                        color: 'white',
+                    }}
+                    onClick={fetchMessages}
+                >
+                    Filter messages
+                </Button>
+            </Box>
         </Box>
         <Divider/>
         <Box my={3}>
