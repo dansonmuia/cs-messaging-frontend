@@ -9,7 +9,8 @@ const siteUrls = {
     assignedMessages: '/dashboard/assigned-messages',
 }
 
-const server = 'http://127.0.0.1:8000'
+// const server = 'http://127.0.0.1:8000'
+const server = 'https://branch-api.myduka.online'
 
 const urls = {
     login: `${server}/login-for-token`,
