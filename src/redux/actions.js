@@ -21,3 +21,8 @@ export const setMessages = messages => ({
     type: 'SET_MESSAGES',
     payload: messages
 })
+
+export const setAssignedMessages = messages => ({
+    type: 'SET_ASSIGNED_MESSAGES',
+    payload: messages
+})

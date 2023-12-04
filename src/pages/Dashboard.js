@@ -6,6 +6,7 @@ import TopNav from '../components/TopNav'
 import Footer from '../components/Footer'
 import AdminList from './AdminList'
 import MessagesList from './MessagesList'
+import AssignedMessagesList from './AssignedMessagesList'
 
 const Dashboard = () => {
   return (
@@ -44,6 +45,7 @@ const Dashboard = () => {
                 }}>
                     <Routes>
                         <Route path='/' index element={<MessagesList/>}/>
+                        <Route path='/assigned-messages' element={<AssignedMessagesList/>}/>
                         <Route path='/admins' element={<AdminList/>}/>
                     </Routes>
                 </Paper>

@@ -68,7 +68,7 @@ const SideMenu = () => {
 
 
                     <ListItem >
-                        <LinkItem to={siteUrls.admins}>
+                        <LinkItem to={siteUrls.assignedMessages}>
                             <ListItemButton>
                                 <ListItemIcon>
                                     <Assignment/>
