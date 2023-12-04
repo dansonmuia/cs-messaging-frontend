@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import AdminList from './AdminList'
 import MessagesList from './MessagesList'
 import AssignedMessagesList from './AssignedMessagesList'
+import RespondToMessage from './RespondToMessage'
 
 const Dashboard = () => {
   return (
@@ -46,6 +47,7 @@ const Dashboard = () => {
                     <Routes>
                         <Route path='/' index element={<MessagesList/>}/>
                         <Route path='/assigned-messages' element={<AssignedMessagesList/>}/>
+                        <Route path='/assigned-messages/:msgId' element={<RespondToMessage/>}/>
                         <Route path='/admins' element={<AdminList/>}/>
                     </Routes>
                 </Paper>

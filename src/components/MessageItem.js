@@ -1,24 +1,38 @@
-import { Box, Grid, Paper, Stack, Switch, Typography } from '@mui/material'
+import { Box, Button, Paper, Stack, Switch, Typography } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import { siteUrls } from '../constants';
+import { useSelector } from 'react-redux';
 
 const MessageItem = ({msg}) => {
-  return (
+    const currentUser = useSelector(state => state.currentUser) || {};
+    const navigate = useNavigate()
+
+    return (
     <Paper sx={{
         padding: 2,
         my: 2,
     }}>
-        <Grid container>
-            <Grid item xs={7}>
-                <Typography gutterBottom>
-                    Msg ID {msg.id}
-                </Typography>
-            </Grid>
-            <Grid item xs={5}>
-                <Typography>
-                    Customer ID: {msg.customer_id}
-                </Typography>
-            </Grid>
-        </Grid>
+        <Box sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+        }}>
+            <Typography>
+                Msg ID {msg.id}
+            </Typography>
+            <Typography>
+                Customer ID: {msg.customer_id}
+            </Typography>
+            {
+                (currentUser && currentUser.id == msg.assigned_to && !msg.is_closed) &&
+                <Button variant='contained' size='small'
+                    onClick={() => navigate(`${siteUrls.assignedMessages}/${msg.id}`)}
+                >
+                    Respond
+                </Button>
+            }
+
+        </Box>
 
         <Box>
             <Typography fontWeight='bold' mt={2}>

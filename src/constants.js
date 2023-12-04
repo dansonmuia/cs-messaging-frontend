@@ -15,6 +15,7 @@ const urls = {
     login: `${server}/login-for-token`,
     listAdmins: `${server}/users/`,
     listMessages: `${server}/messages/`,
+    messageDetail: msgId => `${server}/messages/${msgId}`,
     listAssignedMessages: `${server}/messages/assign-me`,
 }
 
