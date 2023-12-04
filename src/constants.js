@@ -1,4 +1,5 @@
 import logo from './assets/images/branch.jpg';
+import user from './assets/images/user.png';
 
 const siteUrls = {
     login: '/',
@@ -16,6 +17,7 @@ const urls = {
 
 export {
     logo,
+    user,
     siteUrls,
     urls,
 }
