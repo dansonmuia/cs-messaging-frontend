@@ -1,5 +1,5 @@
 import { Box, Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
-import { BusinessCenter } from "@mui/icons-material";
+import { Assignment, BusinessCenter, Email } from "@mui/icons-material";
 import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
 
@@ -52,6 +52,35 @@ const SideMenu = () => {
 
             <Box>
                 <List>
+
+                    <ListItem >
+                        <LinkItem to={siteUrls.listMessages}>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <Email/>
+                                </ListItemIcon>
+                                <ListItemText primary="All Messages" />
+                            </ListItemButton>
+                        </LinkItem>
+                    </ListItem>
+
+                    <Divider sx={{mx: 2}}/>
+
+
+                    <ListItem >
+                        <LinkItem to={siteUrls.admins}>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <Assignment/>
+                                </ListItemIcon>
+                                <ListItemText primary="Assigned Messages" />
+                            </ListItemButton>
+                        </LinkItem>
+                    </ListItem>
+
+                    <Divider sx={{mx: 2}}/>
+
+
                     <ListItem >
                         <LinkItem to={siteUrls.admins}>
                             <ListItemButton>
@@ -64,6 +93,7 @@ const SideMenu = () => {
                     </ListItem>
 
                     <Divider sx={{mx: 2}}/>
+
 
                 </List>
 

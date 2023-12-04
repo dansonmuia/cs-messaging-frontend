@@ -16,3 +16,8 @@ export const setAdmins = admins => ({
     type: 'SET_ADMINS',
     payload: admins
 })
+
+export const setMessages = messages => ({
+    type: 'SET_MESSAGES',
+    payload: messages
+})

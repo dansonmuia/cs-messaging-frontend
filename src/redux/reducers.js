@@ -2,6 +2,7 @@ const initialState = {
     currentUser: null,
     token: null,
     admins: [],
+    messages: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,6 +25,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 admins: action.payload
+            }
+
+        case 'SET_MESSAGES':
+            return {
+                ...state,
+                messages: action.payload
             }
 
         default:
